@@ -4,10 +4,10 @@ session_start();
 function logado(){	
 	return $_SESSION['logado']?? false;	
 }
-function login($name, $emaill){
+function login($email, $password){
 	$_SESSION['logado'] = true;
-	$_SESSION['name'] = $name;	
-	$_SESSION['email']= $email;
+	$_SESSION['email'] = $email;	
+	$_SESSION['password']= $password;
 return true;
 
 }
@@ -20,4 +20,14 @@ exit();
 function logout(){
 	session_destroy();
 }
+
+function id(){
+		global $con;
+		$stmt = $con -> prepare ('SELECT id FROM users WHERE nome = ?');
+		$stmt -> bindParam(1,$_SESSION['name']);
+		$stmt -> execute();
+		$click = $stmt -> fetch();
+//var_dump($click);
+		return $click;
+	}
 ?>
