@@ -18,8 +18,8 @@ include  'Banco/conect.php';
 				<label for="genre">genêro</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="number" name="season" id="season">
-				<label for="season">Temporada</label>
+				<input type="number" name="seasons" id="seasons">
+				<label for="seasons">Temporada</label>
 			</div>
 			<div class="input-field col s12">
 				<input type="text" name="synopsis" id="synopsis">
