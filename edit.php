@@ -1,54 +1,49 @@
 <?php 
 //this add the header of the page 
-include_once 'includes/header.php';?>
-<?php 
+include_once 'includes/header.php';
 // this add the database on system
 include  'Banco/conect.php';
+$t2=$_GET['id'];
+     try {
 
-    try {
-        
-
-
-    $stmt = $conn->prepare("UPDATE serie SET name=:name, genre=:genre, season=:season, synopsis=:synopsis  WHERE id = id");
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':genre', $genre);
-    $stmt->bindParam(':season', $season);
-    $stmt->bindParam(':synopsis', $synopsis);
-    $stmt->execute();
-    $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
-    echo $stmt->rowCount();
-
+    $smt= $con->prepare("SELECT * FROM series WHERE id = ?");
+            $smt -> bindParam(1,$_GET['id']);
+            $smt->execute();
+            $controle = $smt->fetchAll(PDO::FETCH_ASSOC);
+  
 } catch (PDOException $e){
             echo $e;
-
+}
+//var_dump($controle);
 ?>
-
-
 <div class="row">
 	<div class="col s12 m6 push-m3"> 
-	<h3 class="light"> Edit your Series</h3>
+	<h3 class="light"> Judite suas Séries</h3>
 		<form action="update.php" method="POST">
+			<?php foreach ($controle as $vscode):?>
+	
+			
+			
+			<input type="hidden" name="id" value="<?=$vscode['id'];?>">
 			<div class="input-field col s12">
-				<input type="text" name="name" id="name" value="<?=$stmt['name'];?>">
-				<label for="name">Series Name</label>
+				<input type="text" name="name" id="name" value="<?=$vscode['name'];?>">
+				<label for="name">Nome da bichinha</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="text" name="genre" id="geren"value="<?= $stmt['geren'];?>">
-				<label for="genre">genre</label>
+				<input type="text" name="genre" id="genre"value="<?= $vscode['genre'];?>">
+				<label for="genre">gênru</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="number" name="season" id="season"value="<?= $stmt['season'];?>">
-				<label for="season">season</label>
+				<input type="number" name="seasons" id="seasons"value="<?= $vscode['seasons'];?>">
+				<label for="seasons">Tempo arada</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="text" name="synopsis" id="synopsis"value="<?=$stmt['synopsis'];?>">
-				<label for="synopsis">Synopsis</label>
+				<input type="text" name="synopsis" id="synopsis"value="<?=$vscode['synopsis'];?>">
+				<label for="synopsis">Sinopzzz</label>
 			</div>
-			<button  type="submit" class="btn" >Add Serie</button>
-			<a href="index.php" class="btn green"> Home</a>
+			<button  type="submit" class="btn">Adicionar nova Judite</button>
+			<a href="index.php" class="btn green">Voltar pra casinha</a>
+		<?php endforeach?>
 		</form>
 	</div>
 </div> 
@@ -56,5 +51,4 @@ include  'Banco/conect.php';
 <?php 
 //this add the footer on the page
 include_once 'includes/footer.php';
-
 ?>
