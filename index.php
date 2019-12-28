@@ -8,7 +8,6 @@ include_once 'includes/header.php';
 include 'Init/init.php';
 ?>
 
-
 <div class="row">
   <div class="col s12 m6 push-m3">
             <h3 class="light">Ranking da Semana</h3>
@@ -44,21 +43,27 @@ include 'Init/init.php';
                 <?php if(logado()): ?>
                 <a href="edit.php?id=<?php echo $test['id']?>" class="btn-floating orange"> <i class="material-icons">edit</i></a>
             </td>
-          <?php endif?>
+          <?php endif;?>
             <td>
               <?php if(logado()): ?>
         
-              <a href="" class="btn-floating red"> <i class="material-icons">remove</i></a>
+              <a href="remover.php" class="btn-floating red"> <i class="material-icons">remove</i></a>
               </td>
-          <?php endif ?>
+          <?php endif ;?>
           </tr>
          
      <?php endforeach;?>
 
         </tbody>
       </table>
+      <?php if(logado()): ?>
+            
+            <a href="addSeries.php" class="btn">Adicione sua Série</a>
+            <a href="logout,php" class="btn">Sair</a>
+      <?php else:?>
             <a href="addUser.php" class="btn">Registre-se</a>
             <a href="login.php" class="btn">Logar</a>
+          <?php endif;?>
   </div>
 </div>
 <?php 
