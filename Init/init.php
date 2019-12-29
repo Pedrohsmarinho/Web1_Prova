@@ -23,11 +23,12 @@ function logout(){
 
 function id(){
 		global $con;
-		$stmt = $con -> prepare ('SELECT id FROM users WHERE nome = ?');
-		$stmt -> bindParam(1,$_SESSION['name']);
-		$stmt -> execute();
-		$click = $stmt -> fetch();
+		$smt = $con -> prepare ('SELECT id FROM users WHERE email = ?');
+		$smt -> bindParam(1,$_SESSION['email']);
+		$smt -> execute();
+		$click = $smt -> fetch();
 //var_dump($click);
 		return $click;
 	}
+
 ?>
