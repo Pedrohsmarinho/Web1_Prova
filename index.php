@@ -31,8 +31,6 @@ include 'Init/init.php';
             // var_dump($control);
           ?>
         <?php foreach ($control as $test): ?>
-
-        
           <tr>
               <td><?= $test["name"];?></td>
               <td><?= $test["genre"];?></td>
@@ -40,16 +38,21 @@ include 'Init/init.php';
               <td><?= $test["synopsis"];?></td>
             </td>
             <td>
-                <?php if(logado()): ?>
+              <?php if(logado()): ?>
                 <a href="edit.php?id=<?php echo $test['id']?>" class="btn-floating orange"> <i class="material-icons">edit</i></a>
             </td>
           <?php endif;?>
             <td>
+              <?php if (logado()):?>
+                <a href="watch.php?id=<?php echo $test['id']?>" class="btn-floating blue"> <i class="material-icons">remove_red_eye</i></a>
+              <?php endif ?>
+            </td>          
+            <td>
               <?php if(logado()): ?>
-        
-              <a href="remover.php" class="btn-floating red"> <i class="material-icons">remove</i></a>
+              <a href="dontwatch.php?id=<?php echo $test['id']?>" class="btn-floating red"> <i class="material-icons">remove</i></a>
               </td>
-          <?php endif ;?>
+          <?php endif;?>
+
           </tr>
          
      <?php endforeach;?>
@@ -59,7 +62,7 @@ include 'Init/init.php';
       <?php if(logado()): ?>
             
             <a href="addSeries.php" class="btn">Adicione sua Série</a>
-            <a href="logout,php" class="btn">Sair</a>
+            <a href="sair.php" class="btn">Sair</a>
       <?php else:?>
             <a href="addUser.php" class="btn">Registre-se</a>
             <a href="login.php" class="btn">Logar</a>
