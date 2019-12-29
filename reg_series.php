@@ -14,8 +14,8 @@ $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             $smt -> bindParam(4, $data['synopsis']);
             $smt -> execute();
             $series = $smt -> fetchAll();
-
-     header('location: index.php?id=Sucesso');
+    //redirect('index.php?url=Sucesso');
+            header('location: index.php?id=Sucesso');
         }catch(PDOException $e){
             echo $e;
         }
