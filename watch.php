@@ -14,6 +14,17 @@ $net = $smt-> fetch();
 // var_dump($net);
 ?>
 
+<nav>
+ <div class="nav-wrapper depp black">
+       <a href="index.php" class="brand-logo">ParziFlix</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <?php if(logado()): ?>
+        <li><a href="sair.php">Sair</a></li>
+      <?php endif ?>
+      </ul>
+    </div>
+</nav>
+
 <div class="row">
 <div class="col s12 m6 push-m3"> 
 	<h3 class="light">Assistir</h3>
