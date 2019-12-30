@@ -5,6 +5,8 @@ include_once 'includes/header.php';
 // this add the database on system
 include  'Banco/conect.php';
 
+include 'Init/init.php';
+
 if(!empty($_POST['id'])){
 
     try {
@@ -21,7 +23,7 @@ if(!empty($_POST['id'])){
 } catch (PDOException $e){
             echo $e;
 }
-   header('location:index.php');
+  redirect('index.php?url=atualizado com sucesso');
 }
 
 ?>
