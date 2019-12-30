@@ -3,7 +3,23 @@
 include_once 'includes/header.php';?>
 <?php 
 include  'Banco/conect.php';
+
+include 'Init/init.php';
 ?>
+<nav>
+    <div class="nav-wrapper depp black">
+      <a href="index.php" class="brand-logo">ParziFlix</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <?php if(logado()): ?>
+        <li><a href="sair.php">Sair</a></li>
+        <?php else: ?>
+        <li><a href="addUser.php">Cadastre-se</a></li>
+        <li><a href="login.php">Logar</a></li>
+      <?php endif ?>
+      </ul>
+    </div>
+</nav>
+
 <div class="row">
 	<div class="col s12 m6 push-m3"> 
 	<h3 class="light">Novo Usuario</h3>
@@ -25,7 +41,7 @@ include  'Banco/conect.php';
 				<label for="password2">Confirmar Senha</label>
 			</div>
 			<button  type="submit" class="btn">Adicionar</button>
-			<a href="index.php" class="btn green"> Home</a>
+			<!-- <a href="index.php" class="btn green"> Home</a> -->
 		</form>
 	</div>
 </div> 
