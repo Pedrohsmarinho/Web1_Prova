@@ -1,5 +1,6 @@
 <?php
 include_once "Banco/conect.php";
+include 'Init/init.php';
 $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 echo "<pre>";
     print_r($data);
@@ -20,8 +21,7 @@ if($data['password'] == $data['password2']){
         }catch(PDOException $e){
             echo $e;
         }
+redirect('index.php?url=Usuario cadastrado');
     }else{
-        echo "usuário já cadastrado";
-    }
-header('location: index.php?');
+redirect('addUser.php?url=Usuario já cadastrado');    }
 }
