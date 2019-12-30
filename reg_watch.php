@@ -53,9 +53,5 @@ redirect('index.php?url=atualizado com sucesso');
 // var_dump($temp);
 // var_dump($epis);
 
-$smt = $con -> prepare('SELECT series.*, users_series.current_season current_season, users_series.current_episode current_episode from series left join users_series on users_series.serie_id = series.id and users_series.user_id = ? order by users_series.current_season desc, series.name');
-$smt -> bindParam(1, $usuareo);
-$smt -> execute();
-$try = $smt -> fetch();
-//var_dump($try);
+
 ?>
